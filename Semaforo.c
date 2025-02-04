@@ -37,12 +37,13 @@ int main() {
     // Declaração de uma estrutura que armazenará informações sobre o temporizador configurado.
     struct repeating_timer timer;
 
-    // Configura um temporizador repetitivo que chama a função 'repeating_timer_callback' a cada 3 segundo (3000 ms).
-    // Parâmetros:
-    // 3000: Intervalo de tempo em milissegundos (3 segundos).
-    // repeating_timer_callback: Função de callback que será chamada a cada intervalo.
-    // NULL: Dados adicionais que podem ser passados para a função de callback (não utilizado aqui).
-    // &timer: Ponteiro para a estrutura que armazenará informações sobre o temporizador.
+    /* Configura um temporizador repetitivo que chama a função 'repeating_timer_callback' a cada 3 segundo (3000 ms).
+    Parâmetros:
+        3000: Intervalo de tempo em milissegundos (3 segundos).
+        repeating_timer_callback: Função de callback que será chamada a cada intervalo.
+        NULL: Dados adicionais que podem ser passados para a função de callback (não utilizado aqui).
+        &timer: Ponteiro para a estrutura que armazenará informações sobre o temporizador.
+    */
     add_repeating_timer_ms(3000, repeating_timer_callback, NULL, &timer);
 
     while (true) {
