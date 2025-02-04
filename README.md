@@ -17,7 +17,7 @@ Este projeto implementa um semáforo utilizando o microcontrolador **Raspberry P
 - **Microcontrolador Raspberry Pi Pico W**
 - **LED RGB**, ou 3 LEDs nas cores: vermelho, verde e azul.
 - **3 Resistores de valor adequado** (Sugestão de 3 Resistores de 330 Ω).
-- **Fonte de alimentação adequada**
+- **Fonte de alimentação adequada**.
 
 ---
 
