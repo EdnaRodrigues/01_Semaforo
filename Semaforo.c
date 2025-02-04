@@ -16,9 +16,13 @@ void ligar_led (int cor) {
         gpio_put(blue_pin, false);
         gpio_put(red_pin, true);
     } else if (cor == 2) {
+        gpio_put(green_pin, false);
+        gpio_put(blue_pin, true);
+        gpio_put(red_pin, false);
+        /* Para mostrar cor amarela no LED RGB utilizar comandos abaixo:
         gpio_put(green_pin, true);
         gpio_put(blue_pin, false);
-        gpio_put(red_pin, true);
+        gpio_put(red_pin, true); */
     } else if (cor == 3) {
         gpio_put(green_pin, true);
         gpio_put(blue_pin, false);
