@@ -7,37 +7,29 @@
 #define blue_pin 12
 #define red_pin 13
 
-// Define o estado inicial do LED como desligado (false), nas 3 cores possíveis.
-bool red_on = false;
-bool yellow_on = false;
-bool green_on = false;
-
-// Variável global para variação da cor do LED
-uint8_t i = 2; // Inicializada como 2 para que após o primeiro callback chame a segunda cor
+// Variável global para variação da cor do LED.
+uint8_t i = 2; // Definido como 2 para que após o callback ative a função ligar_led na 2ª cor.
+uint8_t status;
 
 void ligar_led (int cor) {
     if (cor == 1) {
         gpio_put(green_pin, false);
         gpio_put(blue_pin, false);
         gpio_put(red_pin, true);
-        red_on = true;
     } else if (cor == 2) {
         gpio_put(green_pin, true);
         gpio_put(blue_pin, false);
         gpio_put(red_pin, true);
-        yellow_on = true;
     } else if (cor == 3) {
         gpio_put(green_pin, true);
         gpio_put(blue_pin, false);
         gpio_put(red_pin, false);
-        green_on = true;
     } else {
         gpio_put(green_pin, true);
         gpio_put(blue_pin, true);
         gpio_put(red_pin, true);
     }
 }
-
 
 // Função de callback que será chamada repetidamente pelo temporizador
 // O tipo bool indica que a função deve retornar verdadeiro ou falso para continuar ou parar o temporizador.
@@ -46,7 +38,7 @@ bool repeating_timer_callback(struct repeating_timer *t) {
     ligar_led(i);
     i++;
     if (i > 3) {
-        i = 1; // Reinicia o valor i após 3
+        i = 1; // Reinicia o valor de i após 3
     }
     
     // Retorna true para manter o temporizador repetindo. Se retornar false, o temporizador para.
@@ -69,6 +61,7 @@ int main() {
     struct repeating_timer timer;
 
     ligar_led(1); // Inicializa o LED na cor vermelha.
+    printf("Estamos na cor vermelho\n");
     
     /* Configura um temporizador repetitivo que chama a função 'repeating_timer_callback' a cada 3 segundo (3000 ms).
     Parâmetros:
@@ -80,10 +73,20 @@ int main() {
     add_repeating_timer_ms(3000, repeating_timer_callback, NULL, &timer);
 
     while (true) {
-
-        //Implementação de envio de mensagens pela porta serial.
-        printf("Hello, world!\n");
+        //Implementação de envio de mensagens pela porta serial a cada 1 s.
         sleep_ms(1000);
+        status = i - 1;
+        switch (status) {
+        case 1:
+            printf("Estamos na cor vermelho\n");
+            break;
+        case 2:
+            printf("Estamos na cor amarelo\n");
+            break;
+        default:
+            printf("Estamos na cor verde\n");
+            break;
+        }
     }
 
     // Retorno de 0, que nunca será alcançado devido ao loop infinito.
