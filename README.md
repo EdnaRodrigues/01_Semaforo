@@ -33,8 +33,8 @@ O código principal:
 1. **Faça git clone** deste repositório no Visual Studio Code.
 2. **Importe a pasta como projeto Raspberry Pi Pico**.
 3. **Compile e grave o código na placa**.
-4. **Monitore a saída serial para visualizar as mensagens**.
-5. **Adicione o executável na placa BitDogLab**.
+4. **Adicione o executável na placa BitDogLab**.
+5. **Monitore a saída serial para visualizar as mensagens**.
 
 **Obs.:** No projeto será disponibilizado os arquivos para simulação no Wokwi integrado ao VSCode, sem precisar obrigatoriamente da placa BitDogLab.
 
