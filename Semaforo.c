@@ -10,7 +10,31 @@
 // Define o estado inicial do LED como desligado (false), nas 3 cores possíveis.
 bool red_on = false;
 bool yellow_on = false;
-bool blue_on = false;
+bool green_on = false;
+
+void ligar_led (int cor) {
+    if (cor == 1) {
+        gpio_put(green_pin, false);
+        gpio_put(blue_pin, false);
+        gpio_put(red_pin, true);
+        red_on = true;
+    } else if (cor == 2) {
+        gpio_put(green_pin, true);
+        gpio_put(blue_pin, false);
+        gpio_put(red_pin, true);
+        yellow_on = true;
+    } else if (cor == 3) {
+        gpio_put(green_pin, true);
+        gpio_put(blue_pin, false);
+        gpio_put(red_pin, false);
+        green_on = true;
+    } else {
+        gpio_put(green_pin, true);
+        gpio_put(blue_pin, true);
+        gpio_put(red_pin, true);
+    }
+}
+
 
 // Função de callback que será chamada repetidamente pelo temporizador
 // O tipo bool indica que a função deve retornar verdadeiro ou falso para continuar ou parar o temporizador.
