@@ -3,9 +3,9 @@
 #include "hardware/timer.h" // Inclui a biblioteca para gerenciamento de temporizadores de hardware.
 
 // Definição de pinos de controle do LED RGB.
-#define green_pin 11;
-#define blue_pin 12;
-#define red_pin 13;
+#define green_pin 11
+#define blue_pin 12
+#define red_pin 13
 
 // Define o estado inicial do LED como desligado (false), nas 3 cores possíveis.
 bool red_on = false;
