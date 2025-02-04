@@ -9,7 +9,6 @@
 
 // Variável global para variação da cor do LED.
 uint8_t i = 2; // Definido como 2 para que após o callback ative a função ligar_led na 2ª cor.
-uint8_t status;
 
 void ligar_led (int cor) {
     if (cor == 1) {
@@ -61,7 +60,6 @@ int main() {
     struct repeating_timer timer;
 
     ligar_led(1); // Inicializa o LED na cor vermelha.
-    printf("Estamos na cor vermelho\n");
     
     /* Configura um temporizador repetitivo que chama a função 'repeating_timer_callback' a cada 3 segundo (3000 ms).
     Parâmetros:
@@ -74,19 +72,21 @@ int main() {
 
     while (true) {
         //Implementação de envio de mensagens pela porta serial a cada 1 s.
-        sleep_ms(1000);
-        status = i - 1;
-        switch (status) {
-        case 1:
+        switch (i) {
+        case 2:
             printf("Estamos na cor vermelho\n");
             break;
-        case 2:
+        case 3:
             printf("Estamos na cor amarelo\n");
             break;
-        default:
+        case 1:
             printf("Estamos na cor verde\n");
             break;
+        default:
+            printf("Valor Inválido\n"); // Não será exibido, já que a sequência é sempre reiniciada antes.
+            break;
         }
+        sleep_ms(1000);
     }
 
     // Retorno de 0, que nunca será alcançado devido ao loop infinito.
